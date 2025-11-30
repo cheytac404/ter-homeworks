@@ -41,21 +41,21 @@ core_fraction=5 - ограничивает производительность 
 - скриншот ЛК Yandex Cloud с созданной ВМ, где видно внешний ip-адрес;
 - скриншот консоли, curl должен отобразить тот же внешний ip-адрес;
 - ответы на вопросы.
-
-
+![alt text](https://github.com/cheytac404/ter-homeworks/blob/main/02/src/1.png)
+![alt text](https://github.com/cheytac404/ter-homeworks/blob/main/02/src/11.png)
 ### Задание 2
 
 1. Замените все хардкод-**значения** для ресурсов **yandex_compute_image** и **yandex_compute_instance** на **отдельные** переменные. К названиям переменных ВМ добавьте в начало префикс **vm_web_** .  Пример: **vm_web_name**.
 2. Объявите нужные переменные в файле variables.tf, обязательно указывайте тип переменной. Заполните их **default** прежними значениями из main.tf. 
 3. Проверьте terraform plan. Изменений быть не должно. 
 
-
+![alt text](https://github.com/cheytac404/ter-homeworks/blob/main/02/src/2.png)
 ### Задание 3
 
 1. Создайте в корне проекта файл 'vms_platform.tf' . Перенесите в него все переменные первой ВМ.
 2. Скопируйте блок ресурса и создайте с его помощью вторую ВМ в файле main.tf: **"netology-develop-platform-db"** ,  ```cores  = 2, memory = 2, core_fraction = 20```. Объявите её переменные с префиксом **vm_db_** в том же файле ('vms_platform.tf').  ВМ должна работать в зоне "ru-central1-b"
 3. Примените изменения.
-
+![alt text](https://github.com/cheytac404/ter-homeworks/blob/main/02/src/3.png)
 
 ### Задание 4
 
@@ -64,14 +64,14 @@ core_fraction=5 - ограничивает производительность 
 
 В качестве решения приложите вывод значений ip-адресов команды ```terraform output```.
 
-
+![alt text](https://github.com/cheytac404/ter-homeworks/blob/main/02/src/4.png)
 ### Задание 5
 
 1. В файле locals.tf опишите в **одном** local-блоке имя каждой ВМ, используйте интерполяцию ${..} с НЕСКОЛЬКИМИ переменными по примеру из лекции.
 2. Замените переменные внутри ресурса ВМ на созданные вами local-переменные.
 3. Примените изменения.
-
-
+![alt text](https://github.com/cheytac404/ter-homeworks/blob/main/02/src/5.png)
+![alt text](https://github.com/cheytac404/ter-homeworks/blob/main/02/src/51.png)
 ### Задание 6
 
 1. Вместо использования трёх переменных  ".._cores",".._memory",".._core_fraction" в блоке  resources {...}, объедините их в единую map-переменную **vms_resources** и  внутри неё конфиги обеих ВМ в виде вложенного map(object).  
@@ -107,3 +107,4 @@ core_fraction=5 - ограничивает производительность 
   
 5. Найдите и закоментируйте все, более не используемые переменные проекта.
 6. Проверьте terraform plan. Изменений быть не должно.
+![alt text](https://github.com/cheytac404/ter-homeworks/blob/main/02/src/6.png)
