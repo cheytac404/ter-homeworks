@@ -21,7 +21,7 @@ resource "yandex_compute_instance" "storage" {
 
   boot_disk {
     initialize_params {
-      image_id = "fd8g64rcu9fq5kpfqls0"  # Ubuntu 20.04
+      image_id = data.yandex_compute_image.ubuntu.image_id
     }
   }
 

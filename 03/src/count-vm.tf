@@ -1,7 +1,6 @@
-/*  data "yandex_compute_image" "ubuntu" {
-  family = "ubuntu-2004-lts"
+  data "yandex_compute_image" "ubuntu" {
+    family = "ubuntu-2004-lts"
 }
-*/
 resource "yandex_compute_instance" "count" {
   count = 2
   name        = "web-${count.index+1}"
@@ -13,9 +12,10 @@ resource "yandex_compute_instance" "count" {
   }
   boot_disk {
     initialize_params {
-      image_id = "fd8nru7hnggqhs9mkqps"
+      image_id = data.yandex_compute_image.ubuntu.image_id
     }
   }
+
   scheduling_policy {
     preemptible = true
   }

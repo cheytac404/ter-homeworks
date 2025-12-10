@@ -36,7 +36,7 @@ resource "yandex_compute_instance" "for_each" {
 }     
   boot_disk {
     initialize_params {
-      image_id = "fd8nru7hnggqhs9mkqps"
+      image_id = data.yandex_compute_image.ubuntu.image_id
     }
   }
 
