@@ -1,27 +1,33 @@
+data "yandex_compute_image" "storage_os" {
+  family = var.storage_vm_image_family
+}
+
+
 resource "yandex_compute_disk" "disk" {
-  count = 3
+  count = var.disk_count
 
   name = "disk-${count.index}"
-  type = "network-hdd"
-  zone = "ru-central1-a"
-  size = 1 
+  type = var.disk_type
+  zone = var.disk_zone
+  size = var.disk_size_gb
 }
 
 
 resource "yandex_compute_instance" "storage" {
-  name                      = "storage"
-  platform_id               = "standard-v3"
-  zone                      = "ru-central1-a"
-  allow_stopping_for_update = true
+  name                      = var.storage_vm_name
+  platform_id               = var.storage_vm_platform_id
+  zone                      = var.storage_vm_zone
+  allow_stopping_for_update = var.storage_vm_allow_stopping
 
   resources {
-    cores  = 2
-    memory = 2
+    cores  = var.storage_vm_cores
+    memory = var.storage_vm_memory_gb
   }
 
   boot_disk {
     initialize_params {
-      image_id = data.yandex_compute_image.ubuntu.image_id
+      image_id = data.yandex_compute_image.storage_os.image_id
+      size     = var.storage_vm_boot_disk_size_gb
     }
   }
 

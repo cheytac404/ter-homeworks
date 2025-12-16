@@ -1,15 +1,18 @@
-  data "yandex_compute_image" "ubuntu" {
-    family = "ubuntu-2004-lts"
+data "yandex_compute_image" "ubuntu" {
+  family = var.vm_image_family
 }
+
 resource "yandex_compute_instance" "count" {
-  count = 2
-  name        = "web-${count.index+1}"
-  platform_id = "standard-v1"
+   count = var.vm_count
+  name = "web-${count.index + 1}"
+  platform_id = var.vm_platform_id
+
   resources {
-    cores         = 2
-    memory        = 1
-    core_fraction = 5
+    cores         = var.vm_cores
+    memory        = var.vm_memory
+    core_fraction = var.vm_core_fraction
   }
+  
   boot_disk {
     initialize_params {
       image_id = data.yandex_compute_image.ubuntu.image_id
